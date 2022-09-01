@@ -4,7 +4,7 @@
 <sqlMap namespace="Sample">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
+	<typeAlias  alias="ComonVO" type="egovframework.example.sample.service.ComonVO"/>
 
 	<select id="ComonDAO.select" resultClass="egovMap">
 		SELECT
@@ -14,5 +14,27 @@
 		order by
 			id DESC	
 	</select>
+	<insert id="ComonDAO.insert">
+		INSERT INTO board
+			(title,content)
+			VALUES
+			(#title#, #content#)
+	</insert>
+	<select id="ComonDAO.view" resultClass="egovMap">
+		SELECT
+			id,title,content
+		from
+			board
+		where
+			id=#id#
+	</select>
+	<update id="ComonDAO.update">
+		update
+			board
+		set
+			title=#title#, content=#content#
+		where
+			id=#id#
+	</update>
 
 </sqlMap>

@@ -232,13 +232,14 @@ $(document).ready(function() {
 	<!-- HEADER END -->
 
 	<!-- CONTENTS BEGIN -->
+	<form id="update" action="board_update.do" name="update" method="post">
 		<div id="sub_contents" class="board head_mg mb140">
 			<div class="navi">
 				<div class="top_navi"><a href="#"><img src="/konkuk/html/_img/cont/navi_arrow.png"></a><h2>자유게시판</h2></div>
 			</div>
 			<div class="bbs_view">
 				<div class="view_top">
-					<p class="tit">테스트 게시물 제목입니다.</p>
+					<p class="tit">${myComonVo.title}</p>
 					<div class="writer"> 
 						<a href="#" class="photo">
 							<span>
@@ -257,7 +258,7 @@ $(document).ready(function() {
 				</div>
 				<div class="view_bottom">
 					<div class="view_cont">
-						<p>테스트 테스트 게시물의 내용입니다.</p><p>자유롭게 내용을 작성해주세요</p>
+						<p class="con">${myComonVo.content}</p>
 					</div>
 					<a href="#none" class="heart on">
 						<span> <!-- 하트활성화 :a 태그에 class="on"를 넣어주세요 -->
@@ -266,9 +267,9 @@ $(document).ready(function() {
 						이 게시물 추천<strong>1</strong>
 					</a>
 					<p class="btn nk_btn mt15">
-						<a href="board.html" class="bt_greenL">목록</a>
-						<a href="board_write.html" class="bt_gray02">수정</a>
-						<a href="#none" class="bt_grayL" onclick="layer_open('delPop','del_Pop')">삭제</a>
+						<a href="board.do" class="bt_greenL">목록</a>
+						<a href="board_update.do?id=${myComonVo.id}" class="bt_gray02" id="modify">수정</a>
+						<a href="#none" class="bt_grayL" id="delete" onclick="layer_open('delPop','del_Pop')">삭제</a>
 					</p>
 				</div>
 			</div>
@@ -331,6 +332,7 @@ $(document).ready(function() {
 		</a>
 	</p>
 </div>		</div>
+</form>
 	<!-- CONTENTS END -->
 
 	<!-- POPUP BEGIN -->
@@ -353,7 +355,7 @@ $(document).ready(function() {
 			<div class="pop_cont text">
 				<p class="tit c">게시물 삭제 완료</p>
 				<p class="mb20 c">게시물이 삭제되었습니다.</p>
-				<p class="btn"><a href="board.html">확인</a></p>
+				<p class="btn"><a href="board.do">확인</a></p>
 			</div> 
 		</div>
 	</div>
@@ -364,4 +366,12 @@ $(document).ready(function() {
 <!-- //wrap -->
 
 </body>
+<script type="text/javascript">
+	
+	$(document).on('click','#modify', function(e) {
+		
+		$("#update").submit();
+		
+	});
+</script>
 </html>

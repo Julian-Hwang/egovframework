@@ -16,19 +16,19 @@ public class ComonDAO extends EgovAbstractDAO{
 		return (List<EgovMap>) list("ComonDAO.select",comonVO);
 	}
 
-	public String insert(ComonVO comonVO) {
+	public void insert(ComonVO comonVO) {
 		// TODO Auto-generated method stub
-		return (String)insert("ComonDAO.insert", comonVO);
+		insert("ComonDAO.insert", comonVO);
 	}
 
-	public ComonVO view(ComonVO comonVO) {
+	public EgovMap view(ComonVO comonVO) {
 		// TODO Auto-generated method stub
-		return (ComonVO) select("ComonDAO.view",comonVO);
+		return (EgovMap) select("ComonDAO.view",comonVO);
 	}
 
-	public void update(ComonVO comonVO) {
+	public int update(ComonVO comonVO) {
 		// TODO Auto-generated method stub
-		update("ComonDAO.update", comonVO);
+		return update("ComonDAO.update", comonVO);
 	}
 
 	public void delete(ComonVO comonVO) {

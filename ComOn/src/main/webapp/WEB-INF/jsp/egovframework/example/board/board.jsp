@@ -261,12 +261,12 @@ $(document).ready(function() {
 						<a href="#" class="btn_mini state on">모든 게시물</a> <!-- 해당 버튼에 클래스 on을 넣어주세요 -->
 						<a href="#" class="btn_mini state">인기 게시물</a> 					
 					</p>
-					<a href="board_write.html" class="btn_mini bt_greenL">게시물 작성</a>
+					<a href="board_write.do" class="btn_mini bt_greenL">게시물 작성</a>
 				</div>
 				<ul class="best_list basic">
 				
 				<c:forEach var="i" items="${list}">
-					<li onclick="location.href='board_view.html'">
+					<li onclick="location.href='board_view.do?id=${i.id}'">
 						<div>
 							<div>
 								<p class="tit"><c:out value="${i.title}"></c:out></p>
@@ -287,7 +287,7 @@ $(document).ready(function() {
 							</p>
 						</div>
 						<p class="img">
-							<img alt="자유게시판" src="../_img/cont/best_bg.png" style="background: url('../_img/cont/best01.jpg')no-repeat 50% 50% / cover;">
+							<img alt="자유게시판" src="/konkuk/html/_img/cont/best_bg.png" style="background: url('/konkuk/html/_img/cont/best01.jpg')no-repeat 50% 50% / cover;">
 						</p>
 					</li>
 				</c:forEach>

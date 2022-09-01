@@ -23,21 +23,21 @@ public class ComonServiceImpl implements ComonService {
 	}
 
 	@Override
-	public String insert(ComonVO comonVO) throws Exception {
+	public void insert(ComonVO comonVO) throws Exception {
 		// TODO Auto-generated method stub
-		return ComonDAO.insert(comonVO);
+		ComonDAO.insert(comonVO);
 	}
 
 	@Override
-	public ComonVO view(ComonVO comonVO) throws Exception {
+	public EgovMap view(ComonVO comonVO) throws Exception {
 		// TODO Auto-generated method stub
-		return ComonDAO.view(comonVO);
+		return (EgovMap) ComonDAO.view(comonVO);
 	}
 
 	@Override
-	public void update(ComonVO comonVO) throws Exception {
+	public int update(ComonVO comonVO) throws Exception {
 		// TODO Auto-generated method stub
-		ComonDAO.update(comonVO);
+		return ComonDAO.update(comonVO);
 	}
 
 	@Override
