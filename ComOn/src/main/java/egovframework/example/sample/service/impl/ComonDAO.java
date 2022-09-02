@@ -36,5 +36,8 @@ public class ComonDAO extends EgovAbstractDAO{
 		delete("ComonDAO.delete",comonVO);
 	}
 
+	public int loginCount(ComonVO comonVO){
+		return (int) select("ComonDAO.loginCount", comonVO);
+	}
 	
 }

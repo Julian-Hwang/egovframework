@@ -15,4 +15,8 @@ public interface ComonService {
 	public int update(ComonVO comonVO) throws Exception;
 	//게시물 삭제
 	public void delete(ComonVO comonVO) throws Exception;
+	
+	//로그인
+	int loginCount(ComonVO comonVO) throws Exception;
+	
 }

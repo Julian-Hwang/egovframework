@@ -36,5 +36,17 @@
 		where
 			id=#id#
 	</update>
+	<delete id="ComonDAO.delete">
+		delete from board
+		where id=#id#
+	</delete>
+	
+	<select id="ComonDAO.loginCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM
+			user
+		WHERE
+			id=#usrId# and password=#usrPass#
+	</select>
 
 </sqlMap>

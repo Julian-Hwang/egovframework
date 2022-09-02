@@ -22,61 +22,68 @@ public class EgovMainController {
 	@Resource(name="ComonService")
 	private ComonService service;
 	
+	//게시판
 	@RequestMapping(value="/board.do")
-	public String board(@ModelAttribute("comonVO") ComonVO comonVO, Model model) throws Exception{
-		
+	public String board(@ModelAttribute("comonVO") ComonVO comonVO, Model model) throws Exception{	
 		List<EgovMap> boardList = service.select(comonVO);
-		
 		model.addAttribute("list", boardList);
 		return "/board/board";
 	}
 	
 	@RequestMapping(value="/board_write.do")
 	public String write(){
-		//System.err.println(comonVO.toString());
 		return "/board/board_write";
 	}
 	
 	@RequestMapping(value="/write.do")
 	public String write(@ModelAttribute("comonVO")ComonVO comonVO) throws Exception{
-		
-		System.err.println("write"+comonVO.toString());
-		//service.insert(comonVO);
-		
+		service.insert(comonVO);
 		return "redirect:board.do";
 	}
 	
 	@RequestMapping(value="/board_view.do")
 	public String view(ComonVO comonVO, Model model) throws Exception{
-		//System.err.println("view");
-		//System.err.println(comonVO.toString());
-		
 		EgovMap myComonVo = service.view(comonVO);
-		//System.err.println("map:"+myComonVo);
 		model.addAttribute("myComonVo", myComonVo);
 		return "/board/board_view";
 	}
 	
 	@RequestMapping(value="/board_update.do")
-	public String update(@ModelAttribute("comonVO")ComonVO comonVO, Model model) throws Exception{
-		/*int myComonVo = */
-		//service.update(comonVO);
-		//model.addAttribute("myComonVo", myComonVo);
-		System.err.println("update"+comonVO.toString());
-		return "redirect:board_write.do?id="+comonVO.getId();
+	public String update(ComonVO comonVO, Model model) throws Exception{
+		EgovMap myComonVo = service.view(comonVO);
+		model.addAttribute("myComonVo", myComonVo);
+		return "/board/board_update";
 	}
-	/*
-	@RequestMapping(value="/board_updateaction.do")
+	
+	@RequestMapping(value="/update.do")
+	public String update(ComonVO comonVO) throws Exception{
+		service.update(comonVO);
+		return "redirect:board.do";
+	}
+	
+	@RequestMapping(value="/delete.do")
+	public String delete(ComonVO comonVO) throws Exception{
+		service.delete(comonVO);
+		return "redirect:board.do";
+	}
+	
+	//로그인
+	@RequestMapping(value="/login.do")
+	public String login() throws Exception{
+		return "/board/login";
+	}
+	
+	@RequestMapping(value="/loginaction.do", produces="application/text; charset=utf8")
 	@ResponseBody
-	public String updateaction(ComonVO comonVO) throws Exception{
-		int result = service.update(comonVO);
-		String message="";
-		if(result==1){
-			message="success";
+	public String loginaction(ComonVO comonVO) throws Exception{
+		System.err.println(comonVO.toString());
+		int count = service.loginCount(comonVO);
+		String msg="";
+		if(count==1){
+			return msg = "success";
 		}
 		else {
-			message="fail";
+			return msg = "fail";
 		}
-		return message;
-	}*/
+	}
 }

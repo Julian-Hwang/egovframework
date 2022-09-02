@@ -232,79 +232,34 @@ $(document).ready(function() {
 	<!-- HEADER END -->
 
 	<!-- CONTENTS BEGIN -->
-	<form id="update" action="board_update.do" name="update" method="post">
+	<form id="update" action="update.do?id=${myComonVo.id}" name="update" method="post">
 		<div id="sub_contents" class="board head_mg mb140">
 			<div class="navi">
-				<div class="top_navi"><a href="#"><img src="/konkuk/html/_img/cont/navi_arrow.png"></a><h2>자유게시판</h2></div>
+				<div class="top_navi"><a href="#"><img src="/konkuk/html/_img/cont/navi_arrow.png"></a><h2>게시물 작성</h2></div>
 			</div>
-			<div class="bbs_view">
-				<div class="view_top">
-					<p class="tit">${myComonVo.title}</p>
-					<div class="writer"> 
-						<a href="#" class="photo">
-							<span>
-								<!-- 기본이미지 -->
-								<img src="/konkuk/html/_img/cont/photo_bg.png" style="background:url('/konkuk/html/_img/cont/friend_bg2.png')no-repeat 50% 50% / cover" width="85">
-								<!-- 이미지 예시 : 권장이미지 225 * 225-->
-								<!-- <img src="/konkuk/html/_img/cont/photo_bg.png" style="background:url('/konkuk/html/_img/cont/ex_photo.jpg')no-repeat 50% 50% /cover" width="85"> -->
-							</span>
-						</a>
-						<div class="info">
-							<a href="#" class="name">유저닉네임</a>
-							<p class="depart"><span>컴퓨터공학과</span><span>20학번</span></p>
-							<p><span>2022.05.20</span><span>11:00</span><span>조회수 22</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="view_bottom">
-					<div class="view_cont">
-						<p class="con">${myComonVo.content}</p>
-					</div>
-					<a href="#none" class="heart on">
-						<span> <!-- 하트활성화 :a 태그에 class="on"를 넣어주세요 -->
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z"/></svg>
-						</span>
-						이 게시물 추천<strong>1</strong>
+			<div class="bbs_write w_box top no_line">
+				<p class="path mb10">자유게시판</p>
+				<input type="text" name="title" id="title" placeholder="게시물 제목 입력" class="mb10" value="${myComonVo.title}"/>
+				<textarea rows="10" name="content" id="content" placeholder="게시물 내용 입력">${myComonVo.content}</textarea>
+				<div class="add_photo">
+					<a href="#none" class="add">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M194.6 32H317.4C338.1 32 356.4 45.22 362.9 64.82L373.3 96H448C483.3 96 512 124.7 512 160V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V160C0 124.7 28.65 96 64 96H138.7L149.1 64.82C155.6 45.22 173.9 32 194.6 32H194.6zM256 384C309 384 352 341 352 288C352 234.1 309 192 256 192C202.1 192 160 234.1 160 288C160 341 202.1 384 256 384z"/></svg></span>
+						<span class="count"><b>2</b> /10</span>
 					</a>
-					<p class="btn nk_btn mt15">
-						<a href="board.do" class="bt_greenL">목록</a>
-						<a href="board_update.do?id=${myComonVo.id}" class="bt_gray02" id="modify">수정</a>
-						<a href="delete.do?id=${myComonVo.id}" class="bt_grayL" id="delete" onclick="layer_open('delPop','del_Pop')">삭제</a>
-					</p>
+					<ul>
+						<li>
+							<span><img src="/konkuk/html/_img/cont/photo_thum.png" width="65" height="65" style="background:url('/konkuk/html/_img/cont/best03.jpg')no-repeat 50% 50% / cover"></span>
+							<a href="#" class="close"></a>
+						</li>
+						<li>
+							<span><img src="/konkuk/html/_img/cont/photo_thum.png" width="65" height="65" style="background:url('/konkuk/html/_img/cont/best04.jpg')no-repeat 50% 50% / cover"></span>
+							<a href="#" class="close"></a>
+						</li>
+					</ul>
 				</div>
+				<p class="btn mt10" id="finish"><a href="#" >작성완료</a></p>
 			</div>
-
-			<div class="bbs_comment">
-				<textarea rows="4" placeholder="댓글입력"></textarea>
-				<p class="btn mt5"><a href="#">등록</a></p>
-				<ul>
-					<li>
-						<div class="con">
-							<p>테스트 댓글입니다.</p><p>좋아요 눌러주세요 ~~</p>
-						</div>
-						<div class="info">
-							<p><span>닉네임</span><span>2022.05.20</span><span>11:00</span></p>
-							<a href="#none" class="heart small on"><!-- 하트활성화 :a 태그에 class="on"를 넣어주세요 -->
-								<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z"/></svg></span>
-								좋아요<strong>1</strong>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="con">
-							<p>테스트 댓글입니다.</p><p>좋아요 눌러주세요 ~~</p>
-						</div>
-						<div class="info">
-							<p><span>닉네임</span><span>2022.05.20</span><span>11:00</span></p>
-							<a href="#none" class="heart small"><!-- 하트활성화 : svg에 class="luv"를 넣어주세요 -->
-								<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z"/></svg></span>
-								좋아요<strong>0</strong>
-							</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-						
+			
 			<div class="bottom_menu">
 	<p>
 		<a href="/konkuk/html/index.html" class="home">
@@ -336,43 +291,29 @@ $(document).ready(function() {
 	<!-- CONTENTS END -->
 
 	<!-- POPUP BEGIN -->
-	<!-- 삭제 선택 시 노출 -->
-	<div class="layer" id="del_Pop">
+	<!-- 작성완료 선택 시 노출 -->
+	<div class="layer" id="ok_Pop">
 		<div class="bg"></div>
-		<div class="pop-layer" id="delPop">
+		<div class="pop-layer" id="okPop">
 			<div class="pop_cont text">
-				<p class="tit c">게시물 삭제</p>
-				<p class="mb20 c">게시물 삭제 후 복구가 불가합니다.<br/>정말 삭제하시겠습니까?</p>
-				<p class="two_btn btn"><a href="#" onclick="layer_open('delokPop','delok_Pop')">확인</a><a href="#" class="bt_red cbtn">취소</a></p>
-			</div> 
-		</div>
-	</div>
-
-	<!-- 삭제 팝업 확인 선택 시 노출 -->
-	<div class="layer" id="delok_Pop">
-		<div class="bg"></div>
-		<div class="pop-layer" id="delokPop">
-			<div class="pop_cont text">
-				<p class="tit c">게시물 삭제 완료</p>
-				<p class="mb20 c">게시물이 삭제되었습니다.</p>
+				<p class="tit c">게시물 작성 완료</p>
+				<p class="mb20 c">게시물이 등록되었습니다.</p>
 				<p class="btn"><a href="board.do">확인</a></p>
 			</div> 
 		</div>
 	</div>
-
 	<!-- POPUP END -->
 
 </div>
 <!-- //wrap -->
-
 </body>
 <script type="text/javascript">
-	
-	$(document).on('click','#modify', function(e) {
+	$(document).on('click','#finish', function(e) {
 		
 		$("#update").submit();
 		
 	});
-	
 </script>
 </html>
+
+

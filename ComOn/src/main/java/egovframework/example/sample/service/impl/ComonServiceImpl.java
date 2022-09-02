@@ -45,6 +45,12 @@ public class ComonServiceImpl implements ComonService {
 		// TODO Auto-generated method stub
 		ComonDAO.delete(comonVO);
 	}
+
+	@Override
+	public int loginCount(ComonVO comonVO) throws Exception {
+		// TODO Auto-generated method stub
+		return ComonDAO.loginCount(comonVO);
+	}
 	
 	
 

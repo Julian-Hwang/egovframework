@@ -24,10 +24,25 @@ public class ComonVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	//로그인
+	private String usrId;
+	private String usrPass;
+	
+	public String getUsrId() {
+		return usrId;
+	}
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
+	}
+	public String getUsrPass() {
+		return usrPass;
+	}
+	public void setUsrPass(String usrPass) {
+		this.usrPass = usrPass;
+	}
 	@Override
 	public String toString() {
-		return "ComonVO [id=" + id + ", title=" + title + ", content=" + content + "]";
+		return "ComonVO [id=" + id + ", title=" + title + ", content=" + content + "]" +"Login [userid="+usrId+", userpw="+usrPass+"]";
 	}
-	
-	
 }
